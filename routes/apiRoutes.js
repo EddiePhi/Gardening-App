@@ -54,7 +54,7 @@ module.exports = function (app) {
           "https://api.openweathermap.org/data/2.5/weather?zip=" +
             results[0].zip_codes +
             ",us&appid=" +
-            process.env.API_KEY2
+            process.env.API_KEY
         ).then(async function (weatherdata) {
           const data = await weatherdata.json();
           console.log(data);

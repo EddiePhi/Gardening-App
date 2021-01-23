@@ -1,9 +1,7 @@
 {
   "development": {
     "username": "root",
-
-    "password": "Password123",
-
+    "password": "rootroot",
     "database": "gardening_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

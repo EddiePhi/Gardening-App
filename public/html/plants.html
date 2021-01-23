@@ -36,9 +36,8 @@
         <div class="navbar-end mr-3">
           <div class="level">
             <div class="level-right">
-              <p class="level-item has-text-white">Thu. January 14, 2021</p>
-              <p class="level-item has-text-white"></p>
-              <p class="level-item has-text-white">Weather</p>
+              <div id="currentWeatherImg" style="height: 50px;"></div>
+              <p id="currentDateTime" class="level-item has-text-white"></p>
             </div>
           </div>
         </div>
@@ -83,86 +82,17 @@
               </ul>
             </div>
           </div>
-          <div class="column is-10 is-offset-1">
-            <!-- Buttons  -->
-            <div class="button-row is-vcentered">
-              <button
-                class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-                id="tomato"
-              >
-                Tomato
-              </button>
-            <button
-              class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-              id="lettuce"
-            >
-              Lettuce
-            </button>
-            <button
-              class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-              id="spinach"
-            >
-              Spinach
-            </button>
-          </div>
-
-          <div class="button-row is-vcentered">
-            <button
-              class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-              id="cucumber"
-            >
-              Cucumber
-            </button>
-            <button
-              class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-              id="peppers"
-            >
-              Peppers
-            </button>
-            <button class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-             id="thyme">
-              Thyme
-            </button>
-          </div>
-          <div class="button-row is-vcentered">
-            <button class="mx-6 my-6 nes-container has-background-white plant-button is-rounded" 
-            id="dill">
-              Dill
-            </button>
-            <button class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-            id="sage">
-              Sage
-            </button>
-            <button
-              class="mx-6 my-6 nes-container has-background-white plant-button is-rounded"
-              id="rosemary"
-            >
-              Rosemary
-            </button>
-
-          </div>
+          <div class="column is-10 is-offset-1" id="plant-container">
         </div>
-        MODAL
+        <!-- MODAL -->
           <div class="modal" id="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h1>(Description description description description)</h1>
-              <p>Sun: </p>
-              <br>
-              <p>Life cycle:</p>
-              <br>
-              <p>Spread:</p>
-              <br>
-              <p>Days to maturity:</p>
-              <br>
-              <p>Height:</p>
-              <br>
-              <p>Sow Method:</p>
-          </div>
           </div>
         </div>
       </div>
     </section>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/switchPages.js"></script>
     <script src="../js/plants.js"></script>
   </body>
 </html>
