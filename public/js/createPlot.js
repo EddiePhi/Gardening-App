@@ -11,9 +11,18 @@ $(document).ready(function () {
   const $plantModal = $("#plantModal");
   const $noteList = $(".list-container .list-group");
   const $plotNameInput = $("#plotNameInput");
+  const $generated = $(".generated");
+
+  //HIDE TABLE ON LAUNCH
+  $plotTable.hide();
+
 
   //CREATE PLOT FUNCTION
   function createPlot() {
+    $rowInput.empty();
+    $columnInput.empty();
+    $plotNameInput.empty();
+    $plotTable.show();
     var num_rows = $rowInput.val();
     var num_cols = $columnInput.val();
 
@@ -35,22 +44,31 @@ $(document).ready(function () {
     document.getElementById("plotTable").innerHTML = theader + tbody + tfooter;
 
     //ADD PLOT TITLE
-    $plotName.append($plotNameInput.val());
+    $plotName.text($plotNameInput.val());
+
   }
 
   // RENDERS LIST WITH PLOT NAMES
-  function renderPlotList(plots) {
-    console.log(plots);
-    $noteList.empty();
+  // function renderPlotList(plot) {
+  //   // console.log(plots);
+  //   // $noteList.empty();
 
-    const plotListItems = [];
+  //   const plotListItems = [];
+
+  //   plotListItems.push($plotNameInput.val());
+
+  //   for (i=0; i < plotListItems.length; i++) {
+  //     $("#plotList2").append(`<button class='generated'>${plotListItems[i]}</button>`);
+  //   };
+
+    
 
     // Returns jquery object for li with given text and delete button
     // unless withDeleteButton argument is provided as false
-    function create$li(text) {
-      const $li = $("<li class='list-group-item'>");
-      const $span = $("<span>").text(text);
-      $li.append($span);
+    // function create$li(text) {
+    //   const $li = $("<li class='list-group-item'>");
+    //   const $span = $("<span>").text(text);
+    //   $li.append($span);
 
       /*
           if (withDeleteButton) {
@@ -61,7 +79,7 @@ $(document).ready(function () {
           }
           return $li;
           */
-    }
+    // }
 
     // if (notes.length === 0) {
     //   noteListItems.push(create$li("No saved Notes"));
@@ -74,7 +92,54 @@ $(document).ready(function () {
     // });
 
     // $noteList.append(noteListItems);
-  }
+  // }
+
+  // $generated.click(retrievePlot());
+
+  // $generated.innerText
+  // function retrievePlot(){
+  //   let getPlotName = $(this).val();
+  //   console.log(getPlotName);
+  //   console.log(getPlotName)
+  //   // console.log("start");
+  //    $.get("/api/plot/" + getPlotName, function(response){
+  //     console.log(response);
+  //    });
+     
+    //  .then(function(response){
+      
+    //   console.log(response)
+      // for (i=0; i < WHATEVER.length; i++){
+      //   if ( $generated.innerText === req.params.plot_name){
+      //     var num_rows = req.params.plot_rows;
+      //     var num_cols = req.params.plot_columns;
+  
+      //     var theader = '<table border="1">\n';
+      //     var tbody = "";
+  
+      //     //CREATE TABLE FOR PLOT BASED ON USER INPUT
+      //     for (var i = 0; i < num_rows; i++) {
+      //       tbody += "<tr>";
+      //       for (var j = 0; j < num_cols; j++) {
+      //         tbody += "<td>";
+      //         tbody +=
+      //           "<img src=https://img.icons8.com/cotton/64/000000/lotus--v1.png>";
+      //         tbody += "</td>";
+      //       }
+      //       tbody += "</tr>\n";
+      //     }
+      //     var tfooter = "</table>";
+      //     document.getElementById("plotTable").innerHTML = theader + tbody + tfooter;
+  
+      //     //ADD PLOT TITLE
+      //     $plotName.append(req.params.plot_name);
+      //       }
+      //     } 
+  // };
+  
+
+
+  
 
   //SAVE NEW PLOT
   function handleNoteSave() {
@@ -85,7 +150,8 @@ $(document).ready(function () {
       plot_columns: $columnInput.val(),
     };
     savePlot(newPlot).then(function (plot) {
-      renderPlotList(plot);
+      // renderPlotList(plot);
+      console.log('Success');
     });
   }
 
@@ -124,12 +190,15 @@ $(document).ready(function () {
   }
 
   //FUNCTION FOR GETTING PLOTS FROM DATABASE
-  function getNotes() {
-    return $.ajax({
-      url: "/api/plot",
-      method: "GET",
-    });
-  }
+  // function getPlot() {
+  //     console.log("start");
+  //    $.get("/api/plot/:plot_name").then(function(response){
+      
+  //     console.log(response)
+  //    });
+  //    console.log("end");
+  // };
+  // getPlot();
 
   //WEATHER ICON AND CURRENT DATE GET REQUEST
   $.get("/api/currentweather/1").then(function (response) {

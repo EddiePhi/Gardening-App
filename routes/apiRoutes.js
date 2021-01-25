@@ -184,20 +184,23 @@ module.exports = function (app) {
 
   //Locations/Plots/plants Joins
 
-  // app.get("/api/locations/:id", function (req, res) {
-  //   db.Plots.findOne({
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //     include: [db.Locations],
-  //   })
-  //     .then(function (dbPlots) {
-  //       res.json(dbPlots);
-  //     })
-  //     .catch((error) => {
-  //       throw error;
-  //     });
-  // });
+  app.get("/api/plot/:plot_name", function (req, res) {
+    db.Plots.findOne({
+      where: {
+        plot_name: req.params.plot_name,
+      },
+      include: [db.Locations],
+    })
+      .then(function (response) {
+        res.json(response);
+        console.log(response);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  });
+
+  //ZIPCODES TABLE API REQUESTS//
 
   //ZipCodes API Requests
 

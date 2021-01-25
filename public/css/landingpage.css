@@ -53,7 +53,7 @@ nav .max-width {
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../assets/garden-background-pixelated.jpg");
+    url("../assets/landing-page/garden-background-pixelated.jpg");
 
   /* Set a specific height */
   height: 50%;
