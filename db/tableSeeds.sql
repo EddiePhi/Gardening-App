@@ -22,9 +22,9 @@ VALUES ("testPlot", 2, 2, now(), now() );
 INSERT INTO zipcodes (zip_codes, createdAt, updatedAt)
 VALUES ("03857", now(), now());
 
-INSERT INTO locations (coordinates, createdAt, updatedAt, plantId, plotID)
-VALUES ("1,1", now(), now(), 1, 1),
-("1,2", now(), now(), 2, 1 ),
-("2,1", now(), now(), 3, 1 ),
-("2,2", now(), now(), 4, 1 )
+INSERT INTO locations (x_coordinate, y_coordinate, createdAt, updatedAt, plantId, plotID)
+VALUES ("1", "1", now(), now(), 1, 1),
+("1", "2", now(), now(), 2, 1 ),
+("2", "1", now(), now(), 3, 1 ),
+("2", "2", now(), now(), 4, 1 )
 
