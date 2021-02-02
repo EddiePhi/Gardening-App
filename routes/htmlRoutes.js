@@ -22,7 +22,7 @@ module.exports = function (app) {
   app.get("/plants", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/plants.html"));
   });
-  // ?????
+  // Route to plotHomePage
   app.get("/home", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/plotHomePage.html"));
   });
