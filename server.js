@@ -14,15 +14,16 @@ require("dotenv").config();
 // Tells node that we are creating an "express" server
 const app = express();
 
-// Sets an initial port. We"ll use this later in our listener
+// Sets an initial port. Or uses env port provided by host service.
 const PORT = process.env.PORT || 8080;
-var db = require("./models");
+
+//Import sequlize models
+const db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(express.static("public2"));
 
 // ================================================================================
 // ROUTER
@@ -30,7 +31,10 @@ app.use(express.static("public2"));
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
-require("./routes/apiRoutes")(app);
+//points to api router
+app.use("/api", require("./routes/apiRoutes"));
+
+//points to html routes
 require("./routes/htmlRoutes")(app);
 
 // =============================================================================
@@ -42,3 +46,5 @@ db.sequelize.sync().then(function () {
     console.log("App listening on PORT: " + PORT);
   });
 });
+
+module.exports = app;
