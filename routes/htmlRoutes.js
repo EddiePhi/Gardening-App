@@ -3,6 +3,8 @@
 // ===============================================================================
 const path = require("path");
 
+const passport = require("../config/passport");
+const db = require("../models");
 // Requiring our custom middleware for checking if a user is logged in (Wk-14 HW)
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -113,6 +115,46 @@ module.exports = function (app) {
   app.get("/what-to-grow", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/what-to-grow.html"));
   });
+
+
+
+  // API ROUTES TEST
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+    });
+    
+    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+    // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+    // otherwise send back an error
+    app.post("/api/signup", function(req, res) {
+    db.User.create({
+        email: req.body.email,
+        password: req.body.password
+    })
+        .then(function() {
+        res.redirect(307, "/api/login");
+        })
+        .catch(function(err) {
+        res.status(401).json(err);
+        });
+    });
+    
+    
+    // Route for getting some data about our user to be used client side
+    app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+        // The user is not logged in, send back an empty object
+        res.json({});
+    } else {
+        // Otherwise send back the user's email and id
+        // Sending back a password, even a hashed password, isn't a good idea
+        res.json({
+        email: req.user.email,
+        id: req.user.id
+        });
+    }
+    });
+    
 
   // If no matching route is found default to landing page/home page
   app.get("*", function (req, res) {
